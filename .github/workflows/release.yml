@@ -68,9 +68,12 @@ jobs:
           VERSION: ${{ needs.release.outputs.tag_name }}
 
       - name: Set up Go for smoke tests
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Run basic smoke test
         run: make check-basic
@@ -257,9 +260,12 @@ jobs:
             /k0s/k0s --output-file /k0s/k0s.sig
 
       - name: Set up Go for smoke tests
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Run basic smoke test
         run: make check-basic
@@ -365,9 +371,12 @@ jobs:
             /k0s/k0s --output-file /k0s/k0s.sig
 
       - name: Set up Go for smoke tests
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Run basic smoke test
         run: make check-basic
@@ -584,9 +593,12 @@ jobs:
         run: .github/workflows/prepare-build-env.sh
 
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3

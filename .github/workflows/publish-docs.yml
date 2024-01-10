@@ -27,10 +27,13 @@ jobs:
           cache: pip
           cache-dependency-path: docs/requirements.txt
 
-      - name: Set up Go ${{ env.GO_VERSION }}
-        uses: actions/setup-go@v3
+      - name: Set up Go
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Install dependencies
         run: |

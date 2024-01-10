@@ -165,9 +165,12 @@ jobs:
         run: .github/workflows/prepare-build-env.sh
 
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Cache GOCACHE
         uses: actions/cache@v3
@@ -224,9 +227,12 @@ jobs:
         run: .github/workflows/prepare-docker-ipv6.sh
 
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Download compiled executable
         uses: actions/download-artifact@v4
@@ -296,9 +302,12 @@ jobs:
         run: .github/workflows/prepare-build-env.sh
 
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Download compiled executable
         uses: actions/download-artifact@v4
@@ -357,9 +366,12 @@ jobs:
         run: .github/workflows/prepare-build-env.sh
 
       - name: Set up Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            hack/tool/go.sum
 
       - name: Cache embedded binaries
         uses: actions/cache@v3
