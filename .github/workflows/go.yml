@@ -181,15 +181,6 @@ jobs:
           path: |
             ~\AppData\Local\go-build
 
-      - name: Cache GOMODCACHE
-        uses: actions/cache@v3
-        with:
-          key: unittests-k0s-windows-amd64-gomodcache-${{ hashFiles('go.sum') }}
-          restore-keys: |
-            build-k0s-windows-amd64-gomodcache-${{ hashFiles('go.sum') }}
-          path: |
-            ~\go\pkg\mod
-
       - name: Run unit tests
         env:
           EMBEDDED_BINS_BUILDMODE: none
